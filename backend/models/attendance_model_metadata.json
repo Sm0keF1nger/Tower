@@ -1,0 +1,487 @@
+{
+  "version": "0.4.0",
+  "trained_at": "2026-09-21T16:41:49.550655+00:00",
+  "records_total": 731,
+  "base_features": [
+    "day_of_week",
+    "month",
+    "week_of_year",
+    "is_weekend",
+    "day_of_year_sin",
+    "day_of_year_cos",
+    "lag_1",
+    "lag_7",
+    "lag_14",
+    "rolling_7",
+    "rolling_14",
+    "rolling_30"
+  ],
+  "holiday_features": [
+    "is_holiday",
+    "day_before_holiday",
+    "day_after_holiday",
+    "days_to_holiday",
+    "days_since_holiday"
+  ],
+  "modalities": {
+    "mri": {
+      "label": "МРТ",
+      "model_name": "random_forest",
+      "uses_holiday_features": true,
+      "selected_features": [
+        "day_of_week",
+        "month",
+        "week_of_year",
+        "is_weekend",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "lag_1",
+        "lag_7",
+        "lag_14",
+        "rolling_7",
+        "rolling_14",
+        "rolling_30",
+        "is_holiday",
+        "day_before_holiday",
+        "day_after_holiday",
+        "days_to_holiday",
+        "days_since_holiday"
+      ],
+      "selection_method": "TimeSeriesSplit (4 фолди) на перших 80% + фінальний хронологічний holdout 20%",
+      "records_used": 701,
+      "train_rows_for_evaluation": 560,
+      "test_rows": 141,
+      "test_start": "2025-08-13",
+      "test_end": "2025-12-31",
+      "metrics": {
+        "weekly_naive_baseline": {
+          "mae": 2.0284,
+          "rmse": 2.5792,
+          "mape": 13.5533,
+          "r2": 0.730596
+        },
+        "linear_regression": {
+          "mae": 1.5479,
+          "rmse": 1.9055,
+          "mape": 10.3694,
+          "r2": 0.852951
+        },
+        "random_forest": {
+          "mae": 1.5712,
+          "rmse": 1.9067,
+          "mape": 10.6317,
+          "r2": 0.852766
+        },
+        "gradient_boosting": {
+          "mae": 1.5394,
+          "rmse": 1.8831,
+          "mape": 10.4697,
+          "r2": 0.856391
+        }
+      },
+      "selected_metrics": {
+        "mae": 1.5712,
+        "rmse": 1.9067,
+        "mape": 10.6317,
+        "r2": 0.852766
+      },
+      "feature_importance": [
+        {
+          "feature": "day_of_week",
+          "importance": 1.9077
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.749
+        },
+        {
+          "feature": "rolling_14",
+          "importance": 0.1377
+        },
+        {
+          "feature": "day_of_year_cos",
+          "importance": 0.0387
+        },
+        {
+          "feature": "rolling_30",
+          "importance": 0.0175
+        },
+        {
+          "feature": "week_of_year",
+          "importance": 0.0103
+        },
+        {
+          "feature": "lag_1",
+          "importance": 0.0026
+        },
+        {
+          "feature": "day_after_holiday",
+          "importance": 0.0006
+        },
+        {
+          "feature": "day_of_year_sin",
+          "importance": 0.0001
+        },
+        {
+          "feature": "month",
+          "importance": 0.0
+        },
+        {
+          "feature": "lag_7",
+          "importance": 0.0
+        },
+        {
+          "feature": "lag_14",
+          "importance": 0.0
+        },
+        {
+          "feature": "rolling_7",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "day_before_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "days_to_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "days_since_holiday",
+          "importance": 0.0
+        }
+      ],
+      "cv_mae": 1.9198,
+      "holiday_comparison": {
+        "selected_variant": "with_holidays",
+        "best_with_holidays_model_name": "random_forest",
+        "best_without_holidays_model_name": "random_forest",
+        "with_holidays": {
+          "mae": 1.5712,
+          "rmse": 1.9067,
+          "mape": 10.6317,
+          "r2": 0.852766
+        },
+        "without_holidays": {
+          "mae": 1.5273,
+          "rmse": 1.8856,
+          "mape": 10.3849,
+          "r2": 0.856015
+        },
+        "mae_improvement_percent": -2.87,
+        "cv_mae_with_holidays": 1.9198,
+        "cv_mae_without_holidays": 1.9496
+      }
+    },
+    "ct": {
+      "label": "КТ",
+      "model_name": "random_forest",
+      "uses_holiday_features": true,
+      "selected_features": [
+        "day_of_week",
+        "month",
+        "week_of_year",
+        "is_weekend",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "lag_1",
+        "lag_7",
+        "lag_14",
+        "rolling_7",
+        "rolling_14",
+        "rolling_30",
+        "is_holiday",
+        "day_before_holiday",
+        "day_after_holiday",
+        "days_to_holiday",
+        "days_since_holiday"
+      ],
+      "selection_method": "TimeSeriesSplit (4 фолди) на перших 80% + фінальний хронологічний holdout 20%",
+      "records_used": 701,
+      "train_rows_for_evaluation": 560,
+      "test_rows": 141,
+      "test_start": "2025-08-13",
+      "test_end": "2025-12-31",
+      "metrics": {
+        "weekly_naive_baseline": {
+          "mae": 2.5177,
+          "rmse": 3.3081,
+          "mape": 12.3526,
+          "r2": 0.740836
+        },
+        "linear_regression": {
+          "mae": 2.0595,
+          "rmse": 2.5034,
+          "mape": 10.348,
+          "r2": 0.851584
+        },
+        "random_forest": {
+          "mae": 2.0313,
+          "rmse": 2.4856,
+          "mape": 10.5256,
+          "r2": 0.85368
+        },
+        "gradient_boosting": {
+          "mae": 2.1548,
+          "rmse": 2.6494,
+          "mape": 11.2438,
+          "r2": 0.833765
+        }
+      },
+      "selected_metrics": {
+        "mae": 2.0313,
+        "rmse": 2.4856,
+        "mape": 10.5256,
+        "r2": 0.85368
+      },
+      "feature_importance": [
+        {
+          "feature": "day_of_week",
+          "importance": 2.041
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 0.9603
+        },
+        {
+          "feature": "day_of_year_cos",
+          "importance": 0.3359
+        },
+        {
+          "feature": "lag_1",
+          "importance": 0.1125
+        },
+        {
+          "feature": "rolling_14",
+          "importance": 0.0643
+        },
+        {
+          "feature": "days_to_holiday",
+          "importance": 0.0328
+        },
+        {
+          "feature": "rolling_7",
+          "importance": 0.0166
+        },
+        {
+          "feature": "lag_7",
+          "importance": 0.0091
+        },
+        {
+          "feature": "month",
+          "importance": 0.006
+        },
+        {
+          "feature": "day_of_year_sin",
+          "importance": 0.006
+        },
+        {
+          "feature": "week_of_year",
+          "importance": 0.0
+        },
+        {
+          "feature": "lag_14",
+          "importance": 0.0
+        },
+        {
+          "feature": "rolling_30",
+          "importance": 0.0
+        },
+        {
+          "feature": "is_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "day_before_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "day_after_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "days_since_holiday",
+          "importance": 0.0
+        }
+      ],
+      "cv_mae": 2.0044,
+      "holiday_comparison": {
+        "selected_variant": "with_holidays",
+        "best_with_holidays_model_name": "random_forest",
+        "best_without_holidays_model_name": "random_forest",
+        "with_holidays": {
+          "mae": 2.0313,
+          "rmse": 2.4856,
+          "mape": 10.5256,
+          "r2": 0.85368
+        },
+        "without_holidays": {
+          "mae": 2.0327,
+          "rmse": 2.4943,
+          "mape": 10.4709,
+          "r2": 0.852657
+        },
+        "mae_improvement_percent": 0.07,
+        "cv_mae_with_holidays": 2.0044,
+        "cv_mae_without_holidays": 2.011
+      }
+    },
+    "xray": {
+      "label": "Рентген",
+      "model_name": "random_forest",
+      "uses_holiday_features": true,
+      "selected_features": [
+        "day_of_week",
+        "month",
+        "week_of_year",
+        "is_weekend",
+        "day_of_year_sin",
+        "day_of_year_cos",
+        "lag_1",
+        "lag_7",
+        "lag_14",
+        "rolling_7",
+        "rolling_14",
+        "rolling_30",
+        "is_holiday",
+        "day_before_holiday",
+        "day_after_holiday",
+        "days_to_holiday",
+        "days_since_holiday"
+      ],
+      "selection_method": "TimeSeriesSplit (4 фолди) на перших 80% + фінальний хронологічний holdout 20%",
+      "records_used": 701,
+      "train_rows_for_evaluation": 560,
+      "test_rows": 141,
+      "test_start": "2025-08-13",
+      "test_end": "2025-12-31",
+      "metrics": {
+        "weekly_naive_baseline": {
+          "mae": 3.9858,
+          "rmse": 4.8903,
+          "mape": 12.3766,
+          "r2": 0.737228
+        },
+        "linear_regression": {
+          "mae": 3.0538,
+          "rmse": 3.8825,
+          "mape": 9.75,
+          "r2": 0.834372
+        },
+        "random_forest": {
+          "mae": 3.0456,
+          "rmse": 3.795,
+          "mape": 9.8245,
+          "r2": 0.84175
+        },
+        "gradient_boosting": {
+          "mae": 3.0993,
+          "rmse": 3.8833,
+          "mape": 9.7393,
+          "r2": 0.834305
+        }
+      },
+      "selected_metrics": {
+        "mae": 3.0456,
+        "rmse": 3.795,
+        "mape": 9.8245,
+        "r2": 0.84175
+      },
+      "feature_importance": [
+        {
+          "feature": "day_of_week",
+          "importance": 3.3039
+        },
+        {
+          "feature": "is_weekend",
+          "importance": 1.44
+        },
+        {
+          "feature": "day_of_year_cos",
+          "importance": 0.0773
+        },
+        {
+          "feature": "lag_7",
+          "importance": 0.047
+        },
+        {
+          "feature": "days_since_holiday",
+          "importance": 0.0304
+        },
+        {
+          "feature": "week_of_year",
+          "importance": 0.0255
+        },
+        {
+          "feature": "is_holiday",
+          "importance": 0.0001
+        },
+        {
+          "feature": "month",
+          "importance": 0.0
+        },
+        {
+          "feature": "day_of_year_sin",
+          "importance": 0.0
+        },
+        {
+          "feature": "lag_1",
+          "importance": 0.0
+        },
+        {
+          "feature": "lag_14",
+          "importance": 0.0
+        },
+        {
+          "feature": "rolling_7",
+          "importance": 0.0
+        },
+        {
+          "feature": "rolling_14",
+          "importance": 0.0
+        },
+        {
+          "feature": "rolling_30",
+          "importance": 0.0
+        },
+        {
+          "feature": "day_before_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "day_after_holiday",
+          "importance": 0.0
+        },
+        {
+          "feature": "days_to_holiday",
+          "importance": 0.0
+        }
+      ],
+      "cv_mae": 3.0919,
+      "holiday_comparison": {
+        "selected_variant": "with_holidays",
+        "best_with_holidays_model_name": "random_forest",
+        "best_without_holidays_model_name": "random_forest",
+        "with_holidays": {
+          "mae": 3.0456,
+          "rmse": 3.795,
+          "mape": 9.8245,
+          "r2": 0.84175
+        },
+        "without_holidays": {
+          "mae": 3.0703,
+          "rmse": 3.8009,
+          "mape": 10.0356,
+          "r2": 0.841262
+        },
+        "mae_improvement_percent": 0.8,
+        "cv_mae_with_holidays": 3.0919,
+        "cv_mae_without_holidays": 3.1061
+      }
+    }
+  }
+}

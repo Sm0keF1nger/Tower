@@ -1,0 +1,103 @@
+{
+  "realm": "tower",
+  "enabled": true,
+  "displayName": "Tower",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": true,
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Повний доступ до Tower"
+      },
+      {
+        "name": "manager",
+        "description": "Панель, аналітика та прогноз"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "tower-web",
+      "name": "Tower — вебзастосунок",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "rootUrl": "http://localhost:3000",
+      "baseUrl": "http://localhost:3000",
+      "redirectUris": [
+        "http://localhost:3000/auth/callback"
+      ],
+      "webOrigins": [
+        "http://localhost:3000"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:3000/*"
+      },
+      "protocolMappers": [
+        {
+          "name": "tower-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "tower-web",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "lightweight.claim": "false",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@tower.local",
+      "firstName": "Адміністратор",
+      "lastName": "Tower",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Admin123!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "admin"
+      ]
+    },
+    {
+      "username": "manager",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "manager@tower.local",
+      "firstName": "Менеджер",
+      "lastName": "Tower",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Manager123!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "manager"
+      ]
+    }
+  ],
+  "internationalizationEnabled": true,
+  "supportedLocales": [
+    "uk"
+  ],
+  "defaultLocale": "uk",
+  "loginTheme": "tower-uk"
+}

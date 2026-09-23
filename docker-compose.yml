@@ -1,0 +1,70 @@
+name: tower
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.4
+    command: start-dev --import-realm
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: kcadmin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: kcadmin
+      KC_HOSTNAME: http://localhost:8080
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+      - ./backend/keycloak/import:/opt/keycloak/data/import:ro
+      - ./backend/keycloak/themes/tower-uk:/opt/keycloak/themes/tower-uk:ro
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      FRONTEND_URL: http://localhost:3000
+      KEYCLOAK_PUBLIC_URL: http://localhost:8080
+      KEYCLOAK_INTERNAL_URL: http://keycloak:8080
+      KEYCLOAK_REALM: tower
+      KEYCLOAK_CLIENT_ID: tower-web
+      OAUTH_REDIRECT_URI: http://localhost:3000/auth/callback
+      COOKIE_SECURE: "false"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/data:/app/data
+      - ./backend/models:/app/models
+    depends_on:
+      - keycloak
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      VITE_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/index.html:/app/index.html
+      - ./frontend/vite.config.ts:/app/vite.config.ts
+      - ./frontend/tsconfig.json:/app/tsconfig.json
+      - ./frontend/tsconfig.app.json:/app/tsconfig.app.json
+      - ./frontend/tsconfig.node.json:/app/tsconfig.node.json
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  keycloak_data:
