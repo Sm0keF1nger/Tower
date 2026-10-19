@@ -19,10 +19,6 @@ openapi_tags = [
 app = FastAPI(
     title="Tower — API аналітики клініки",
     version="0.5.0",
-    description=(
-        "Система аналізу та прогнозування кількості обстежень МРТ, КТ і рентгену. "
-        "Авторизація реалізована через OAuth 2.0, потік коду авторизації + PKCE (S256)."
-    ),
     openapi_tags=openapi_tags,
     docs_url="/swagger",
     redoc_url=None,

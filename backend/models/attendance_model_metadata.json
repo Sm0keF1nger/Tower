@@ -1,6 +1,6 @@
 {
   "version": "0.4.0",
-  "trained_at": "2026-09-21T16:41:49.550655+00:00",
+  "trained_at": "2026-10-06T02:09:24.675360+00:00",
   "records_total": 731,
   "base_features": [
     "day_of_week",
@@ -226,10 +226,10 @@
           "r2": 0.85368
         },
         "gradient_boosting": {
-          "mae": 2.1548,
-          "rmse": 2.6494,
-          "mape": 11.2438,
-          "r2": 0.833765
+          "mae": 2.1604,
+          "rmse": 2.6567,
+          "mape": 11.2611,
+          "r2": 0.832848
         }
       },
       "selected_metrics": {
@@ -379,10 +379,10 @@
           "r2": 0.84175
         },
         "gradient_boosting": {
-          "mae": 3.0993,
-          "rmse": 3.8833,
-          "mape": 9.7393,
-          "r2": 0.834305
+          "mae": 3.1014,
+          "rmse": 3.885,
+          "mape": 9.745,
+          "r2": 0.834158
         }
       },
       "selected_metrics": {

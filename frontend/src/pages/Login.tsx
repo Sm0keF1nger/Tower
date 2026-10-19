@@ -26,15 +26,12 @@ export default function Login() {
         <div className="login-brand-mark">T</div>
         <Typography.Title level={2}>Tower</Typography.Title>
         <Typography.Paragraph type="secondary">
-          Інтелектуальна система аналізу та прогнозування навантаження клініки.
+          Cистема аналізу та прогнозування навантаження клініки.
         </Typography.Paragraph>
         {error && <Alert type="error" showIcon message="Помилка авторизації" description={error} style={{ marginBottom: 16 }} />}
         <Button type="primary" size="large" block icon={<LoginOutlined />} loading={starting} onClick={handleLogin}>
-          Увійти через Keycloak
+          Увійти
         </Button>
-        <Typography.Paragraph className="login-hint" type="secondary">
-          Авторизація: OAuth 2.0, потік коду авторизації + PKCE (S256).
-        </Typography.Paragraph>
       </Card>
     </div>
   )

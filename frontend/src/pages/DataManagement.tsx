@@ -64,9 +64,6 @@ export default function DataManagement() {
           Рекомендований широкий формат: <Typography.Text code>date,mri,ct,xray</Typography.Text>. Також підтримується довгий формат:
           <Typography.Text code>date,modality,patients</Typography.Text>, де технічні значення modality: mri / ct / xray (МРТ / КТ / рентген). Для кожної дати вкажіть усі три типи; якщо обстежень не було — запишіть 0.
         </Typography.Paragraph>
-        <Typography.Paragraph type="secondary">
-          Файл лише з date + загальною кількістю пацієнтів не буде автоматично розділено між типами обстежень, оскільки це створило б недостовірні дані.
-        </Typography.Paragraph>
         <Upload.Dragger {...uploadProps} disabled={uploading}>
           <p className="ant-upload-drag-icon"><InboxOutlined /></p>
           <p className="ant-upload-text">Перетягніть CSV/XLSX сюди або натисніть для вибору</p>

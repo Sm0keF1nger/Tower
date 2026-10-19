@@ -46,9 +46,6 @@ if errorlevel 1 (
 
 echo.
 echo Tower is ready.
-echo Web:      http://localhost:3000
-echo API:      http://localhost:8000/docs
-echo Keycloak: http://localhost:8080
 echo.
 start "" "http://localhost:3000"
 timeout /t 2 >nul

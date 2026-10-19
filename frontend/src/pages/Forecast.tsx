@@ -54,8 +54,7 @@ export default function Forecast() {
       <div className="toolbar-row">
         <PageHeader
           title="Прогноз"
-          description="Прогноз кількості МРТ, КТ та рентген-обстежень. Система перевіряє святкові ознаки під час навчання та використовує їх для кожного типу лише тоді, коли вони покращують часову валідацію."
-        />
+       />
         <div className="forecast-controls">
           <Select value={modality} onChange={setModality} options={modalityOptions} style={{ minWidth: 180 }} />
           <Radio.Group value={days} onChange={(event) => setDays(event.target.value)} buttonStyle="solid">
@@ -91,9 +90,20 @@ export default function Forecast() {
               </ResponsiveContainer>
             </div>
           </Card>
-          <Card title="Таблиця прогнозу" bordered={false} className="panel-card">
-            <Table rowKey="date" size="small" pagination={false} dataSource={forecast} columns={tableColumns} scroll={{ x: 520, y: 390 }} />
-          </Card>
+        <Card
+          title="Таблиця прогнозу"
+          bordered={false}
+          className="panel-card forecast-table-card"
+        >
+          <Table
+            rowKey="date"
+            size="small"
+            pagination={false}
+            dataSource={forecast}
+            columns={tableColumns}
+            scroll={{ y: 390 }}
+          />
+        </Card>
         </div>
       )}
     </>

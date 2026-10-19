@@ -99,7 +99,6 @@ export default function ModelPerformancePage() {
       <div className="toolbar-row">
         <PageHeader
           title="Моделі машинного навчання"
-          description="Якість прогнозу, хронологічне тестування, важливість ознак та експеримент із впливом свят. Доступ лише для адміністратора."
         />
         <Select<ModelModality>
           value={modality}
@@ -205,9 +204,7 @@ export default function ModelPerformancePage() {
               <Col xs={24} md={8}><StatCard title="MAE без свят" value={current.holiday_comparison.without_holidays.mae} precision={2} /></Col>
               <Col xs={24} md={8}><StatCard title="Зміна MAE" value={current.holiday_comparison.mae_improvement_percent} precision={2} suffix="%" /></Col>
             </Row>
-            <Typography.Paragraph type="secondary" style={{ marginTop: 16, marginBottom: 0 }}>
-              Позитивне значення означає, що святкові ознаки зменшили MAE на фінальному тестовому періоді. Для вибору фінального варіанта система окремо використовує часову крос-валідацію на навчальній частині, тому святкові ознаки не додаються примусово, якщо не покращують якість.
-            </Typography.Paragraph>
+
           </Card>
         </>
       )}
